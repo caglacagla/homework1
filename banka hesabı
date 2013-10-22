@@ -1,0 +1,87 @@
+#include<stdio.h>  /*kütüphaneyi printf scanf fonksiyonları icin ekledim*/
+#include<conio.h>  /*kütüphaneyi gethe fonksiyonu için ekledim*/
+void main ()
+
+ {  int  a,b,i,h,w,y,x,z,u,e,k,t=400;/*int ile kullanacagım degiskenleri ve bakiye tanımladım*/
+asil:/*goto ile dönüs yapmak icin buraya bir belirtec koydum*/
+printf("musteri numarasi :");/*musteri numarasını kullanıcının girmesi icin ekrana yazdırdım*/
+scanf("%8d",&a);/*degisken olan a yi musteri numarası olarak kullanıcıya yazdırmak cin kullandım*/
+printf("sifre:");
+scanf("%5d",&b);
+printf("\n");
+if((a==12345678) &&  (b==12345))/*sifre ve musteri numarasini belirledim eger kulanici dogru girerse program devam edecek*/
+	
+{        menu:/*goto icin yazdim*/
+		 printf("MENU\n");
+      printf("==========\n");
+	  printf("1-para cekme\n");
+	  printf("2-para yatirma\n");
+	  printf("3-bakiye sorgulama\n");
+	  printf("4-baska hesaba para yatirma\n");
+	  printf("5-cikis.\n");
+	  printf("\n");
+	  printf("tercihinizi giriniz (1/2/3/4/5):\n");
+	  scanf("%d", &i);/*kullanicinin girecegi tercihi i degiskeni olarak gösterdim*/
+	  printf("\n");
+	  switch(i)
+		 { case 1: /*switch case yapisini menu hazırlamak ve kullaniciya istedigi islemi secme imkani tanimak için kullandım*/
+       printf("PARA CEKME\n");
+	   printf("=========\n");
+              printf("cekeceginiz miktari giriniz:\n");
+			  scanf("%d",&h);/*kullanicinin cekecegi miktar*/
+			  x=t-h;/*t bakiye ve cekilen miktar sonucu kalan para x */
+              printf("cektiginiz miktar:%d\n,kalan para:%d\n",h,x);/*cekilen ve kalan parayi ekrana yazdirdim*/
+			  goto menu;/*bu işlem bittikten sonra menuye geri donmesi icin goto yapısı*/
+			  printf("##################\n");
+			  break;
+	  
+		 case 2:
+			 printf("KENDİ HESABIMA PARA YATIRMA\n");
+		 printf("=========\n");
+         printf("yatiracaginiz mikrari giriniz:\n");
+		scanf("%d",&w);
+		y=t+w;
+		printf("yatirdiginiz miktar:%d\n,hesaptaki para:%d\n",w,y);
+		goto menu;
+		printf("#################\n");
+	    break;
+	
+		 case 3:
+		printf("BAKIYE SORGULAMA\N");
+		printf("===========\n");
+	   printf("hesabınızdaki bakiye:%dt",t );/*t en basta tanimladigim gibi bakiyeyi gosterdi ve ekrana yazdirdi*/
+	   goto menu;
+	   printf("#######################\n");
+	   break;
+	  
+		 case 4:
+			printf("BASKA HESABA PARA YATIRMA\n");
+			printf("============\n");
+		printf("hesap numarasi giriniz:\n");
+		scanf("%d",&k);
+		printf("gondereceğiniz miktari giriniz:\n");
+		scanf("%d",&z);
+		u=t-z;
+		printf("gondrdiginiz miktar:%d\n,kalan para:%d\n",z,u);
+		goto menu;
+		printf("###################\n");
+		break;
+		
+		 case 5:
+			 printf("\n\n hoscakalin\n\n");
+			 goto asil;/*cikis secenegi ile kullanici hesabindan cikti ne musteri numarasini tekrar girmesini istedim*/
+			 printf("########################\n");
+		 break;
+	  }
+
+}
+		     
+   { if(a!=12345678 || b!=12345 )/*eger kullanici sifre veya musteri numarasini yanlis girerse */
+     printf("yanlis sifre veya kullaci adi girdiniz.\n");
+   goto asil;/*tekrar musteri numarasi istedim*/
+	printf("\n");
+	printf("########################\n");
+
+	  }
+   getchar();
+}
