@@ -27,11 +27,18 @@ if((a==12345678) &&  (b==12345))/*sifre ve musteri numarasini belirledim eger ku
 		 { case 1: /*switch case yapisini menu hazırlamak ve kullaniciya istedigi islemi secme imkani tanimak için kullandım*/
        printf("PARA CEKME\n");
 	   printf("=========\n");
+	   para:
               printf("cekeceginiz miktari giriniz:\n");
 			  scanf("%d",&h);/*kullanicinin cekecegi miktar*/
 			  x=t-h;/*t bakiye ve cekilen miktar sonucu kalan para x */
-              printf("cektiginiz miktar:%d\n,kalan para:%d\n",h,x);/*cekilen ve kalan parayi ekrana yazdirdim*/
-			  goto menu;/*bu işlem bittikten sonra menuye geri donmesi icin goto yapısı*/
+			  if(h<=t)/*maksimum bakiyedeki para kadar cekebilir*/
+             { printf("cektiginiz miktar:%d\n,kalan para:%d\n",h,x);/*cekilen ve kalan parayi ekrana yazdirdim*/
+			   goto menu;/*bu işlem bittikten sonra menuye geri donmesi icin goto yapısı*/
+			  }
+			  else/*bakiyeden fazla miktar girilirse */
+				{  printf("hesabinizda sadece 400 lira var.\n");
+			  goto para;/*tekar miktar girmesini istedim*/
+			  }
 			  printf("##################\n");
 			  break;
 	  
@@ -49,7 +56,7 @@ if((a==12345678) &&  (b==12345))/*sifre ve musteri numarasini belirledim eger ku
 		 case 3:
 		printf("BAKIYE SORGULAMA\N");
 		printf("===========\n");
-	   printf("hesabınızdaki bakiye:%dt",t );/*t en basta tanimladigim gibi bakiyeyi gosterdi ve ekrana yazdirdi*/
+	   printf("hesabinizdaki bakiye:%dtl.\n",t );/*t en basta tanimladigim gibi bakiyeyi gosterdi ve ekrana yazdirdi*/
 	   goto menu;
 	   printf("#######################\n");
 	   break;
@@ -59,25 +66,34 @@ if((a==12345678) &&  (b==12345))/*sifre ve musteri numarasini belirledim eger ku
 			printf("============\n");
 		printf("hesap numarasi giriniz:\n");
 		scanf("%d",&k);
+		miktar:
 		printf("gondereceğiniz miktari giriniz:\n");
 		scanf("%d",&z);
 		u=t-z;
-		printf("gondrdiginiz miktar:%d\n,kalan para:%d\n",z,u);
+		if(z<=t)
+		{printf("gondrdiginiz miktar:%d\n,kalan para:%d\n",z,u);
 		goto menu;
+		}
+		else
+			{printf("hesabinizda sadece 400 lira var.\n");
+		goto miktar;
+		}
+		
+		
 		printf("###################\n");
 		break;
 		
 		 case 5:
-			 printf("\n\n hoscakalin\n\n");
-			 goto asil;/*cikis secenegi ile kullanici hesabindan cikti ne musteri numarasini tekrar girmesini istedim*/
+			{ printf("\n\n hoscakalin\n\n");
+			goto asil;/*cikis secenegi ile kullanici hesabindan cikti ne musteri numarasini tekrar girmesini istedim*/}
 			 printf("########################\n");
 		 break;
 	  }
 
 }
 		     
-   { if(a!=12345678 || b!=12345 )/*eger kullanici sifre veya musteri numarasini yanlis girerse */
-     printf("yanlis sifre veya kullaci adi girdiniz.\n");
+    if(a!=12345678 || b!=12345 )/*eger kullanici sifre veya musteri numarasini yanlis girerse */
+    { printf("yanlis sifre veya kullaci adi girdiniz.\n");
    goto asil;/*tekrar musteri numarasi istedim*/
 	printf("\n");
 	printf("########################\n");
